@@ -1,0 +1,19 @@
+# `gen_score()`
+
+```{markdown}
+gen_score(
+    text
+)
+```
+
+- **text**: A string object to be analyzed.
+
+## Examples
+
+```{r}
+library(genCountR)
+
+text <- 'This person was a heroine due to their fighting during the war.'
+
+result_df <- genCountR::gen_score(text)
+```

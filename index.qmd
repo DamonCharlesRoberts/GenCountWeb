@@ -1,0 +1,68 @@
+---
+title: "genCounter"
+---
+
+If you are wanting to use the [Gendered Language Dictionary developed by Roberts and Utych (2019)](https://journals.sagepub.com/doi/10.1177/1065912919874883), there are two main ways that you can do so:
+
+- R Package
+- Webapp (Archived)
+
+Both of these are built as side projects as I have time and I can not guarantee perfect accuracy with either of these tools. So, be sure to use them at your own risk. The R Package interface is much more transparent with the results for the tool, so that one is recommended more highly than the Webapp.
+
+# Using the R Package
+
+## Installation
+
+The package is currently under review with `CRAN`. However, you are welcome to download the most recent version of the package from `Github`:
+
+```{{r}}
+devtools::install_github("DamonCharlesRoberts/genCountR")
+```
+
+Or if you are using `RENV`
+
+```{{r}}
+renv::install("DamonCharlesRoberts/genCountR")
+```
+
+## Count number of matches to dictionary with their score and label
+
+To count the number of occurrences in your document that also appear in the dictionary, you can use the `genCountR::gen_count()` function. It will not only count the number of words that match those in the dictionary, but it will also return the score and whether the word was classified according to [Roberts and Utych (2019)](https://journals.sagepub.com/doi/10.1177/1065912919874883)^[Words that have a score below 2.5 are Feminine, words with a score between 2.5 and 5.5 are Neutral, and words with a score above 5.5 are Masculine.]
+
+```{r}
+# Load the package
+library(genCountR)
+
+# Pass a string to be analyzed
+str <- "This person was a hero. They were a prisoner of war and I, as President, got them out."
+
+# Use the gen_count() function on the str
+gen_count(str)
+```
+
+## Return the overall score of the passed string
+
+To find an overall score of the "genderedness" of some text, you can use the `genCountR::gen_score()` function. This function takes the count of words that match with those in the dictionary, sum up the scores of all of those matched occurrences and then calculates the average "document" score by dividing by the number of words passed in the string ("document").
+
+It also returns more information than the average score. It will return a `list` object including the average score (`avg_score`), but also the total score `total_score` for the document before normalized based on the length of text, but also the `data.frame` (`df`) that reports which words were matched, how often they occurred, the score, and the total score provided by each word.
+
+```{r}
+# Load the package
+library(genCountR)
+
+# Pass a string to be analyzed
+str <- "This person was a hero. They were a prisoner of war and I, as President, got them out."
+
+# Use the gen_count() function on the str
+gen_score(str)
+```
+
+# Using the Webapp
+
+::: {.callout-warning style="minimal"}
+#### Note
+
+The webapp has been archived. I was paying monthly to host it and the costs were not justified too well. Please use the R package from now on. Sorry for any inconvenience!
+:::
+
+1. Go to: [https://gencounter.app.damoncroberts.com](https://gencounter.app.damoncroberts.com)

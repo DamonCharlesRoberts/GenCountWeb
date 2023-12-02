@@ -1,0 +1,16 @@
+# `gen_count`
+
+```{{r}}
+gen_count(
+    text
+)
+```
+
+- **text**: A string object to be analyzed.
+
+## Examples
+
+```{r}
+text <- 'This person was a heroine due to their fighting during the war.'
+result_df <- genCountR::gen_count(text)
+```

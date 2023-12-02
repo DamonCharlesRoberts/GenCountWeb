@@ -1,0 +1,5 @@
+# Functions
+
+- [`gen_count()`](gen_count.qmd): A function to count the number of matched words with the dictionary, the dictionary's score for the word, and the classification of the word being masculine or feminine according to [Roberts and Utych (2019)](https://journals.sagepub.com/doi/10.1177/1065912919874883).
+
+- [`gen_score()`](gen_score.qmd): A function to provide a average score for a document. It finds words that matches to that of the dictionary, counts the number of occurrences of those matches, creates a total document score by summing the score times the number of occurrences of each matched word and then divides by the number of words in the passed string. The function returns a list object reporting this `avg_score`, the `total_score`, and `df` -- a `data.frame` that shows which words were matched, how many times they occurred, and the scores for the words.
